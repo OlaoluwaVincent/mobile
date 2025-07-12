@@ -8,6 +8,7 @@ export type ThemedViewProps = ViewProps & {
   darkColor?: string;
   safe?: boolean;
   scrollable?: boolean;
+  page?: boolean;
   className?: string;
 };
 
@@ -18,22 +19,16 @@ export function ThemedView({
   darkColor,
   safe,
   scrollable,
+  page,
   children,
   ...otherProps
 }: ThemedViewProps) {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, "background");
   const insets = useSafeAreaInsets();
 
-  // If no bg-* class, fallback to backgroundColor
   const shouldFallback = !className || !/bg-/.test(className);
 
   const mergedStyle = shouldFallback ? [{ backgroundColor }, style] : style;
-
-  const commonProps = {
-    style: mergedStyle,
-    className: cn(className),
-    ...otherProps,
-  };
 
   if (safe) {
     if (scrollable) {
@@ -44,7 +39,11 @@ export function ThemedView({
             { paddingTop: insets.top, paddingBottom: insets.bottom },
           ]}
         >
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...commonProps}>
+          <ScrollView
+            contentContainerStyle={[{ flexGrow: 1 }, page && { paddingBottom: insets.bottom }]}
+            className={cn(className)}
+            {...otherProps}
+          >
             {children}
           </ScrollView>
         </SafeAreaView>
@@ -68,11 +67,24 @@ export function ThemedView({
 
   if (scrollable) {
     return (
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} {...commonProps}>
+      <ScrollView
+        contentContainerStyle={[{ flexGrow: 1 }, page && { paddingBottom: insets.bottom }]}
+        style={mergedStyle}
+        className={cn(className)}
+        {...otherProps}
+      >
         {children}
       </ScrollView>
     );
   }
 
-  return <View {...commonProps}>{children}</View>;
+  return (
+    <View
+      style={[mergedStyle, page && { paddingBottom: insets.bottom }]}
+      className={cn(className)}
+      {...otherProps}
+    >
+      {children}
+    </View>
+  );
 }

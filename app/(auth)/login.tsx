@@ -1,10 +1,13 @@
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { Button } from "@/components/ui/Button";
 import React from "react";
-import { Text, View } from "react-native";
 
 export default function Login() {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <ThemedView className="flex-1">
+      <ThemedText>Login</ThemedText>
+      <Button href={"/register"}>Register Here</Button>
+    </ThemedView>
   );
 }

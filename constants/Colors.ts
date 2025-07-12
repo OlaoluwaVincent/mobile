@@ -13,6 +13,18 @@ export const Colors = {
     success: "#22C55E", // green
     warning: "#F97316", // orange
     error: "#EF4444", // red
+
+    // New colors
+    info: "#0EA5E9", // bright cyan info
+    muted: "#CBD5E1", // cool gray muted
+    softBlue: "#BFDBFE", // soft light blue
+    softGreen: "#BBF7D0", // soft mint green
+    softYellow: "#FEF9C3", // soft yellow
+    softOrange: "#FCD34D", // soft orange
+    softPink: "#FBCFE8", // soft pink
+    softPurple: "#DDD6FE", // soft lavender
+    softRed: "#FECACA", // soft red
+    softTeal: "#99F6E4", // soft teal
   },
   dark: {
     text: "#DCEAFE", // light blue text
@@ -28,5 +40,17 @@ export const Colors = {
     success: "#4ADE80", // green
     warning: "#FB923C", // orange
     error: "#F87171", // red
+
+    // New colors
+    info: "#0EA5E9", // bright cyan info
+    muted: "#475569", // dark cool gray muted
+    softBlue: "#1E40AF", // rich dark blue
+    softGreen: "#14532D", // deep green
+    softYellow: "#78350F", // deep amber
+    softOrange: "#9A3412", // dark orange
+    softPink: "#9D174D", // deep pink
+    softPurple: "#6D28D9", // violet
+    softRed: "#7F1D1D", // dark red
+    softTeal: "#134E4A", // dark teal
   },
 };

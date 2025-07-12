@@ -1,12 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Pressable, Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ThemedText } from "./ThemedText";
 import { ThemedView } from "./ThemedView";
 
-export default function Header({ title }: { title?: string }) {
+export default function Header() {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
@@ -24,10 +26,12 @@ export default function Header({ title }: { title?: string }) {
             className="p-2 bg-blue-icon rounded-full"
           />
         </Pressable>
-        <Text className="font-bold text-2xl text-blue-primary">
-          My<Text className="text-blue-tabSelected">post</Text>
-          <Text>UTME</Text>
-        </Text>
+        <Link href={"/"}>
+          <ThemedText className="font-bold text-2xl text-blue-primary">
+            My<Text className="text-blue-tabSelected">post</Text>
+            <Text>UTME</Text>
+          </ThemedText>
+        </Link>
       </ThemedView>
       <StatusBar style="auto" />
     </>
